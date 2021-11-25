@@ -1,0 +1,10 @@
+Title,,,,Impact,,Host,IP,Port,,,,Target,,,,,Notes
+Scan Interference,,,,High,,c.x.fr,3.0.0.0,443,,,,/dddx//,,,,,
+Scan Interference,,,,High,,c.x.fr,3.0.0.0,80,,,,/,,,,,
+Sensitive file/component published: package.json,,,,Low,,c.x.fr,3.0.0.0,443,,,,/wp-content/plugins/jquery-manager/package.json,,,,,
+Sensitive file/component published: composer.json,,,,Low,,c.x.fr,3.0.0.0,443,,,,/wp-content/plugins/jquery-manager/composer.json,,,,,
+Possible Dependency Confusion,,,,High,,c.x.fr,3.0.0.0,443,,,,/wp-content/plugins/jquery-manager/package.json,,,,,
+Slowloris Denial of Service (DoS),,,,Medium,,api.x.fr,1.1.1.14,443,,,,/,,,,,
+Slowloris Denial of Service (DoS),,,,Medium,,waffa.x.fr,1.1.1.14,443,,,,/,,,,,
+Slowloris Denial of Service (DoS),,,,Medium,,www.x.fr,1.1.1.24,443,,,,/,,,,,
+Strict Transport Security not enabled,,,,Medium,,api.x.fr,1.1.1.14,443,,,,/,,,,,

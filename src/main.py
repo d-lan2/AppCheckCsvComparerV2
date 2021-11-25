@@ -84,21 +84,6 @@ def printResultToFile(filePath, additions, removals, allResults, sameResults, de
         allResults.sort(key=lambda x: x.Rank)
         sameResults.sort(key=lambda x: x.Rank)
 
-        text_file.write("Removals:\n")
-        text_file.write("Total:" + str(len(removals)) + "\n")
-        for r in removals:
-            text_file.write(r.Title + delimiter + r.Impact + delimiter + r.Url  + delimiter + r.IP + delimiter + r.Port + "\n")
-
-        text_file.write("\nAdditions:\n")
-        text_file.write("Total:" + str(len(additions)) + "\n")
-        for a in additions:
-            text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + r.Port + "\n")
-        
-        text_file.write("\nSame Results:\n")
-        text_file.write("Total:" + str(len(sameResults)) + "\n")
-        for s in sameResults:
-            text_file.write(s.Title + delimiter + s.Impact + delimiter + s.Url + delimiter + s.IP + delimiter + s.Port + "\n")
-
         text_file.write("\nAll Results:\n")
         text_file.write("Total:" + str(len(allResults)) + "\n")
         high = sum(p.Impact == "High" for p in allResults)
@@ -107,8 +92,46 @@ def printResultToFile(filePath, additions, removals, allResults, sameResults, de
         info = sum(p.Impact == "Info" for p in allResults)
         text_file.write("\nHigh:" + str(high) + delimiter + "Medium:" + str(med) + delimiter + "Low:" + str(low) + delimiter + "Info:" + str(info) + "\n")
         for a in allResults:
-            text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + r.Port + "\n")
+            text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + a.Port + "\n")
+
+        text_file.write("Removals:\n")
+        text_file.write("Total:" + str(len(removals)) + "\n")
+        for r in removals:
+            text_file.write(r.Title + delimiter + r.Impact + delimiter + r.Url  + delimiter + r.IP + delimiter + r.Port + "\n")
+
+        text_file.write("\nAdditions:\n")
+        text_file.write("Total:" + str(len(additions)) + "\n")
+        for a in additions:
+            text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + a.Port + "\n")
         
+        text_file.write("\nSame Results:\n")
+        text_file.write("Total:" + str(len(sameResults)) + "\n")
+        for s in sameResults:
+            text_file.write(s.Title + delimiter + s.Impact + delimiter + s.Url + delimiter + s.IP + delimiter + s.Port + "\n")
+
+def runComparerAgainstDirs(dirWithPreviousScans, dirWithCurrentScans, outputfile, delimiter):
+    import glob
+    filesPrevious = [f for f in glob.glob(dirWithPreviousScans + "**/*", recursive=True)]
+    filesCurrent = [f for f in glob.glob(dirWithCurrentScans + "**/*", recursive=True)]
+    
+    #Construst one large object 
+    allPrevious = []
+    for x in filesPrevious:
+        allPrevious += appCheckCSVtoObjectList(x)
+
+    allCurrent = []
+    for x in filesCurrent:
+        allCurrent += appCheckCSVtoObjectList(x)
+
+    additions = getAdditions(allPrevious, allCurrent)
+    removals = getRemovals(allPrevious, allCurrent)
+    same = getSame(allPrevious, allCurrent)
+    printResultToFile(outputfile, additions, removals, allCurrent, same, delimiter)
+
+    return [additions, removals, same, allCurrent]
+
+
+
 def runMain(old,new,output, delimiter):
     currentMonthsResults = appCheckCSVtoObjectList(new)
     lastMonthsResults = appCheckCSVtoObjectList(old)

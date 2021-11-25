@@ -1,0 +1,6 @@
+Title,,,,Impact,,Host,IP,Port,,,,Target,,,,,Notes
+Item 1,,,,High,,c.x.fr,0.0.0.1,443,,,,/,,,,,
+Item 1,,,,High,,c.x.fr,0.0.0.1,80,,,,/,,,,,
+item 2,,,,Low,,c.x.fr,0.0.0.3,443,,,,/dddx//,,,,,
+item 2,,,,Low,,c.x.fr,0.0.0.4,443,,,,/wp-content/plugins/jquery-manager/composer.json,,,,,
+item 3,,,,High,,c.x.fr,0.0.0.5,443,,,,/wp-content/plugins/jquery-manager/package.json,,,,,

@@ -38,6 +38,15 @@ def test_can_correctly_calculate():
     assert len(lastMonthsResults) == len(currentMonthsResults) - len(additions) + len(removals)
     assert len(same) == len(lastMonthsResults) - len(removals)
 
+
+def test_can_correctly_calculate_when_concatting_scan_results():
+    results = runComparerAgainstDirs("./tests/test_data/dirtest/previous", "./tests/test_data/dirtest/current", "./output/dirtest/output.csv", ",")
+    additions, removals, same, allCurrent = results
+    assert len(additions) == 1
+    assert len(removals) == 2
+    assert len(same) == 12
+    assert len(additions) + len(same) + len(removals)  == len(allCurrent) + 2 #+2 to account for removals
+
     #Discrepency analysis
         # #Here i am reverting this months set calculations to get last months
     # #copy items
