@@ -7,6 +7,6 @@ from src.main import *
 #The below are just placeholders
 #runMain("oldScanLocationHere", "newScanLocationHere", "./output/Output.csv", ",")
 
-runComparerAgainstDirs("C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/november/comparer/allScansOld",
-"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/november/comparer/allScansNew",
-"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/november/comparer/AllScansDifference.csv", ",")
+runComparerAgainstDirs("C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/December/Exports",
+"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/January/Exports",
+"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/January/ComparerDiff/difference.csv", ",")

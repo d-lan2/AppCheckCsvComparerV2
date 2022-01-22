@@ -79,32 +79,32 @@ def getRemovals(previousMonthsResultsArray, currentMonthsResultsArray):
 def printResultToFile(filePath, additions, removals, allResults, sameResults, delimiter):
     with open(filePath, "w+") as text_file:
         order = [("High",1), ("Medium", 2), ("Low", 3), ("Info", 4)]
-        additions.sort(key=lambda x: x.Rank)
-        removals.sort(key=lambda x: x.Rank)
-        allResults.sort(key=lambda x: x.Rank)
-        sameResults.sort(key=lambda x: x.Rank)
+        additions.sort(key=lambda x: (x.Rank, x.Title))
+        removals.sort(key=lambda x: (x.Rank, x.Title))
+        allResults.sort(key=lambda x: (x.Rank, x.Title))
+        sameResults.sort(key=lambda x: (x.Rank, x.Title))
 
-        text_file.write("\nAll Results:\n")
+        text_file.write("\n\n\nAll Results:\n")
         text_file.write("Total:" + str(len(allResults)) + "\n")
         high = sum(p.Impact == "High" for p in allResults)
         med = sum(p.Impact == "Medium" for p in allResults)
         low = sum(p.Impact == "Low" for p in allResults)
         info = sum(p.Impact == "Info" for p in allResults)
-        text_file.write("\nHigh:" + str(high) + delimiter + "Medium:" + str(med) + delimiter + "Low:" + str(low) + delimiter + "Info:" + str(info) + "\n")
+        text_file.write("\n\n\nHigh:" + str(high) + delimiter + "Medium:" + str(med) + delimiter + "Low:" + str(low) + delimiter + "Info:" + str(info) + "\n")
         for a in allResults:
             text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + a.Port + "\n")
 
-        text_file.write("Removals:\n")
+        text_file.write("\n\n\nRemovals:\n")
         text_file.write("Total:" + str(len(removals)) + "\n")
         for r in removals:
             text_file.write(r.Title + delimiter + r.Impact + delimiter + r.Url  + delimiter + r.IP + delimiter + r.Port + "\n")
 
-        text_file.write("\nAdditions:\n")
+        text_file.write("\n\n\nAdditions:\n")
         text_file.write("Total:" + str(len(additions)) + "\n")
         for a in additions:
             text_file.write(a.Title + delimiter + a.Impact + delimiter + a.Url + delimiter + a.IP + delimiter + a.Port + "\n")
         
-        text_file.write("\nSame Results:\n")
+        text_file.write("\n\n\nSame Results:\n")
         text_file.write("Total:" + str(len(sameResults)) + "\n")
         for s in sameResults:
             text_file.write(s.Title + delimiter + s.Impact + delimiter + s.Url + delimiter + s.IP + delimiter + s.Port + "\n")
