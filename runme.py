@@ -9,4 +9,4 @@ from src.main import *
 
 runComparerAgainstDirs("C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/December/Exports",
 "C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/January/Exports",
-"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/January/ComparerDiff/difference.csv", ",")
+"C:/Users/dylan/Documents/Secarma/Reports/LMS Monthly/January/ComparerDiff/difference2.csv", "\t")

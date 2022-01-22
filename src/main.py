@@ -84,6 +84,7 @@ def printResultToFile(filePath, additions, removals, allResults, sameResults, de
         allResults.sort(key=lambda x: (x.Rank, x.Title))
         sameResults.sort(key=lambda x: (x.Rank, x.Title))
 
+        text_file.write("sep=" + delimiter)
         text_file.write("\n\n\nAll Results:\n")
         text_file.write("Total:" + str(len(allResults)) + "\n")
         high = sum(p.Impact == "High" for p in allResults)
